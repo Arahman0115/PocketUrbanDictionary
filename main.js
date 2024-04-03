@@ -14,6 +14,22 @@ const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
 camera.position.set(0, 0, 100); // Adjust camera position
 
+
+const listener = new THREE.AudioListener();
+camera.add( listener );
+
+// create a global audio source
+const sound = new THREE.Audio( listener );
+
+// load a sound and set it as the Audio object's buffer
+const audioLoader = new THREE.AudioLoader();
+audioLoader.load( './Interstellar.ogg', function( buffer ) {
+	sound.setBuffer( buffer );
+	sound.setLoop( true );
+	sound.setVolume( 0.5 );
+	sound.play();
+});
+
 // Create a CSS2DRenderer
 const labelRenderer = new CSS2DRenderer();
 labelRenderer.setSize(window.innerWidth, window.innerHeight);
@@ -28,19 +44,19 @@ const renderer = new THREE.WebGLRenderer({
 renderer.setPixelRatio(window.devicePixelRatio);
 renderer.setSize(window.innerWidth, window.innerHeight);
 
-// Create a red cube
+// Create a red sphere
 const textureLoader = new THREE.TextureLoader();
 const texture = textureLoader.load('./space.jpg');
 
 const geometry = new THREE.SphereGeometry(45, 70, 70);
 const material = new THREE.MeshBasicMaterial({ map: texture });
-const cube = new THREE.Mesh(geometry, material);
-scene.add(cube);
-cube.position.set(0,-15,0)
+const sphere = new THREE.Mesh(geometry, material);
+scene.add(sphere);
+sphere.position.set(0,-15,0)
 
 const ringRadius = 70;
-const ringTubeRadius = 3;
-const ringSegments = 50;
+const ringTubeRadius = 1.5;
+const ringSegments = 500;
 const ringGeometry = new THREE.TorusGeometry(ringRadius, ringTubeRadius, ringSegments, ringSegments);
 const ringMaterial = new THREE.MeshBasicMaterial({ map: texture });
 const ringMesh = new THREE.Mesh(ringGeometry, ringMaterial);
@@ -257,13 +273,13 @@ seedictbutton.addEventListener('click', () => {
 	scene.remove(cssObject2)
 	scene.remove(cssObject3)
 	scene.add(savebuttonObject);
+    scene.remove(newwordtextMesh)
 
 	buttonObject.element.style.display = 'none';
     addbuttonObject.element.style.display = 'none';
     seedictbuttonObject.element.style.display = 'none'
 
     // Create a new scene for displaying the dictionary
-
 
 	
     // Function to create HTML elements for dictionary entries
@@ -315,6 +331,7 @@ seedictbutton.addEventListener('click', () => {
 			scene.add(cssObject)
 			scene.add(cssObject2)
 			scene.add(cssObject3)
+            
 
             newcontainer.remove();
             buttonObject.element.style.display = 'block';
@@ -446,10 +463,10 @@ let Newbool = true;
 // Animation loop
 function animate() {
     requestAnimationFrame(animate);
-    //cube.rotation.x += 0.01;
-    cube.rotation.y += 0.01;
-	ringMesh.rotation.x += 0.01;
-	ringMesh.rotation.y += 0.02;
+    //sphere.rotation.x += 0.01;
+    sphere.rotation.y += 0.01;
+	ringMesh.rotation.y += .005;
+
 
    // if (!isTrue) {
     //    newwordtextMesh.rotation.y += .3;
