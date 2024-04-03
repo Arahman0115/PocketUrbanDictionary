@@ -1,0 +1,65 @@
+canvas {
+  position: fixed;
+  top: 0;
+  left:0;
+}
+
+.bg {
+  color:aqua;
+}
+.rounded-button {
+  border-radius: 5px; /* Adjust the border-radius value to control the roundness */
+  padding: 10px 20px; /* Adjust padding as needed */
+  background-color: #3498db; /* Change the background color */
+  color: white; /* Change the text color */
+  font-size: 16px; /* Adjust font size as needed */
+  border: none; /* Remove border */
+  cursor: pointer; /* Show pointer cursor on hover */
+}
+
+.rounded-button:hover {
+  background-color: red;
+}
+
+.label {
+  background-color: #3498db; 
+  color: white;
+  border-radius: 5px;
+  padding: 10px 20px;
+}
+.definition {
+  background-color: #3498db; 
+  color: white;
+  border-radius: 5px;
+  padding: 10px 20px;
+}
+.example {
+  background-color: #3498db;
+  color: white; 
+  border-radius: 5px;
+  padding: 10px 20px;
+}
+
+.div {
+  background-color: red;
+}
+
+.entryDivStyle {
+  background-color: purple;
+}
+
+#text-container {
+  position: absolute;
+}
+
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(3, 100px); /* Adjust column width as needed */
+  grid-gap: 10px; /* Add gap between grid items */
+}
+.grid-item {
+  background-color: red;
+  padding: 10px;
+  text-align: center;
+}
