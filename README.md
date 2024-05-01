@@ -1,5 +1,5 @@
 # Pocket Urban Dictinary
-This is PG-13
-Generate random words using Urban Dict Api
+Potential M Rated Content
+Generate random words using Urban Dict API
 Add words to dictionary using local storage and view them whenever you want.
 Search feature yet to be added
